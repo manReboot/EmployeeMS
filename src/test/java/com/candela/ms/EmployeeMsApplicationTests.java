@@ -2,6 +2,7 @@ package com.candela.ms;
 
 import com.candela.ms.bean.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.camel.test.spring.CamelSpringBootRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
+@RunWith(CamelSpringBootRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class EmployeeMsApplicationTests {
@@ -34,7 +35,7 @@ public class EmployeeMsApplicationTests {
 		{
 			mockMvc.perform(
 					MockMvcRequestBuilders
-					.get("/ms/empservice/get/2")
+					.get("/get/2")
 					.accept(MediaType.APPLICATION_JSON_UTF8))
 					.andDo(print())
 					.andExpect(status().isOk())
@@ -58,7 +59,7 @@ public class EmployeeMsApplicationTests {
 		{
             mockMvc.perform(
                     MockMvcRequestBuilders
-			.post("/ms/empservice/insert")
+			.post("/camel/insert")
 			.accept(MediaType.APPLICATION_JSON_UTF8)
 			.contentType(MediaType.APPLICATION_JSON_UTF8)
 			.content(new ObjectMapper().writeValueAsString(employee)))
@@ -84,7 +85,7 @@ public class EmployeeMsApplicationTests {
 		{
 		    mockMvc.perform(
 			MockMvcRequestBuilders
-					.post("/ms/empservice/update")
+					.post("/came/update")
 					.accept(MediaType.APPLICATION_JSON_UTF8)
 					.contentType(MediaType.APPLICATION_JSON_UTF8)
 					.content(new ObjectMapper().writeValueAsString(employee)))

@@ -15,6 +15,6 @@ public interface EmpMapper {
     @Insert("insert into EMPLOYEE(NAME,POSITION) VALUES(#{name}, #{position})")
     boolean insert(Employee employee);
 
-    @Update("update EMPLOYEE set NAME=#{name}, POSITION=#{post}")
+    @Update("update EMPLOYEE set NAME=#{name}, POSITION=#{post} where id=#{id}")
     boolean update(Employee employee);
 }
